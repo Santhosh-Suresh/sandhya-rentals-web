@@ -275,11 +275,27 @@ export default function Home() {
             </div>
 
             <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/corporate-retreat-team-VTLWoFtqAfRFa4BhKfJpHC.webp"
-                alt="Corporate team retreat with outdoor activities and collaboration"
-                className="w-full h-full object-cover"
-              />
+              {activeTab === "leisure" && (
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/service-leisure-retreats-SVEqxx5G8a6wN9FQvHuTqe.webp"
+                  alt="Family vacation at luxury mountain cabin with fireplace and mountain views"
+                  className="w-full h-full object-cover"
+                />
+              )}
+              {activeTab === "corporate" && (
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/service-corporate-retreats-RVCxkqtTNd6jpkHkMCqy5i.webp"
+                  alt="Corporate team-building retreat with strategic planning and collaboration"
+                  className="w-full h-full object-cover"
+                />
+              )}
+              {activeTab === "bay-area" && (
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/berryessa-tech-corporate-retreat-Gu5pLuRYvKhZvHvCWPJJiA.webp"
+                  alt="Silicon Valley tech corporate housing with modern meeting space"
+                  className="w-full h-full object-cover"
+                />
+              )}
             </div>
           </div>
         </div>
