@@ -404,11 +404,12 @@ export default function Home() {
           {propertyTab === "berryessa" && (
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-96 md:h-full overflow-hidden bg-gradient-to-br from-accent/20 to-secondary/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <Briefcase className="w-24 h-24 text-accent/40 mx-auto mb-4" />
-                    <p className="text-foreground/40 font-medium">Berryessa Corporate Housing</p>
-                  </div>
+                <div className="relative h-96 md:h-full overflow-hidden">
+                  <img
+                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/berryessa-tech-corporate-retreat-UxD5pJspKzoJLBWy94TeSd.webp"
+                    alt="Silicon Valley tech office aesthetic corporate retreat space in Berryessa"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <div className="p-8 md:p-12 space-y-6">
