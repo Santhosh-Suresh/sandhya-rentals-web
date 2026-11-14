@@ -77,7 +77,7 @@ export default function Home() {
             {/* Right: Hero Image - Stairway to Heaven */}
             <div className="relative h-96 md:h-full rounded-lg overflow-hidden shadow-xl">
               <img
-                src={stairwayPhotos[0]}
+                src={`${import.meta.env.BASE_URL}images/stairway/stairway-hero-aerial.jpg`}
                 alt="Stairway to Heaven - Luxury mountain cabin in Broken Bow"
                 className="w-full h-full object-cover"
               />
