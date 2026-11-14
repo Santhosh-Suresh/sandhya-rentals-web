@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, ArrowRight, Zap, Users, Mountain, Briefcase } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight, ArrowLeft, Zap, Users, Mountain, Briefcase } from "lucide-react";
 import { useState } from "react";
 
 /**
@@ -8,9 +8,17 @@ import { useState } from "react";
  * mountain-inspired dividers. Premium yet inviting. Tech-savvy but warm.
  */
 
+const ROCKWAY_BOOKING_URL = "https://book.balakrishnangroup.com/listings/566609";
+const ROCKWAY_PHOTO_COUNT = 41;
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState("leisure");
   const [propertyTab, setPropertyTab] = useState("stairway");
+  const [rockwayPhoto, setRockwayPhoto] = useState(0);
+  const rockwayPhotos = Array.from(
+    { length: ROCKWAY_PHOTO_COUNT },
+    (_, i) => `${import.meta.env.BASE_URL}images/rockway/rockway-${String(i + 1).padStart(2, "0")}.jpg`
+  );
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -291,8 +299,8 @@ export default function Home() {
               )}
               {activeTab === "bay-area" && (
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/berryessa-tech-corporate-retreat-Gu5pLuRYvKhZvHvCWPJJiA.webp"
-                  alt="Silicon Valley tech corporate housing with modern meeting space"
+                  src={rockwayPhotos[0]}
+                  alt="Spacious 4-bedroom San Jose home near Downtown SJ"
                   className="w-full h-full object-cover"
                 />
               )}
@@ -420,12 +428,31 @@ export default function Home() {
           {propertyTab === "berryessa" && (
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-96 md:h-full overflow-hidden">
+                <div className="relative h-96 md:h-full min-h-96 overflow-hidden bg-black">
                   <img
-                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/berryessa-tech-corporate-retreat-UxD5pJspKzoJLBWy94TeSd.webp"
-                    alt="Silicon Valley tech office aesthetic corporate retreat space in Berryessa"
+                    src={rockwayPhotos[rockwayPhoto]}
+                    alt={`San Jose corporate housing photo ${rockwayPhoto + 1} of ${rockwayPhotos.length}`}
                     className="w-full h-full object-cover"
                   />
+                  <button
+                    type="button"
+                    aria-label="Previous photo"
+                    onClick={() => setRockwayPhoto((rockwayPhoto - 1 + rockwayPhotos.length) % rockwayPhotos.length)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 text-primary shadow hover:bg-white"
+                  >
+                    <ArrowLeft size={20} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next photo"
+                    onClick={() => setRockwayPhoto((rockwayPhoto + 1) % rockwayPhotos.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 text-primary shadow hover:bg-white"
+                  >
+                    <ArrowRight size={20} />
+                  </button>
+                  <span className="absolute bottom-3 right-3 rounded bg-black/60 px-2 py-1 text-xs text-white">
+                    {rockwayPhoto + 1} / {rockwayPhotos.length}
+                  </span>
                 </div>
 
                 <div className="p-8 md:p-12 space-y-6">
@@ -478,9 +505,9 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="pt-4">
-                    <a href="mailto:service@sandhyarentals.biz" className="no-underline">
+                    <a href={ROCKWAY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
                       <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
-                        Inquire About Availability <ArrowRight size={18} />
+                        Book Direct <ArrowRight size={18} />
                       </Button>
                     </a>
                   </div>
@@ -576,6 +603,7 @@ export default function Home() {
               <h4 className="font-bold mb-4">Connect</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="https://www.airbnb.com/rooms/1615494606725655003" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">Stairway to Heaven on Airbnb</a></li>
+                <li><a href={ROCKWAY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">Book San Jose Corporate Housing</a></li>
                 <li><a href="mailto:service@sandhyarentals.biz" className="hover:text-accent transition">Email</a></li>
                 <li><a href="tel:+14084311846" className="hover:text-accent transition">Phone</a></li>
               </ul>
