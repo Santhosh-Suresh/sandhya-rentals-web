@@ -10,12 +10,18 @@ import { useState } from "react";
 
 const ROCKWAY_BOOKING_URL = "https://book.balakrishnangroup.com/listings/566609";
 const ROCKWAY_PHOTO_COUNT = 41;
+const STAIRWAY_PHOTO_COUNT = 29;
 const STAIRWAY_BOOKING_URL = "https://hometeamluxuryrentals.com/properties/stairway-to-heaven-7br-luxury-pickle-ball-mountain-views-broken-bow";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("leisure");
   const [propertyTab, setPropertyTab] = useState("stairway");
   const [rockwayPhoto, setRockwayPhoto] = useState(0);
+  const [stairwayPhoto, setStairwayPhoto] = useState(0);
+  const stairwayPhotos = Array.from(
+    { length: STAIRWAY_PHOTO_COUNT },
+    (_, i) => `${import.meta.env.BASE_URL}images/stairway/stairway-${String(i + 1).padStart(2, "0")}.jpg`
+  );
   const rockwayPhotos = Array.from(
     { length: ROCKWAY_PHOTO_COUNT },
     (_, i) => `${import.meta.env.BASE_URL}images/rockway/rockway-${String(i + 1).padStart(2, "0")}.jpg`
@@ -71,7 +77,7 @@ export default function Home() {
             {/* Right: Hero Image - Stairway to Heaven */}
             <div className="relative h-96 md:h-full rounded-lg overflow-hidden shadow-xl">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/hero-stairway-to-heaven-XT5pxuboycFomUdhWcbRbg.webp"
+                src={stairwayPhotos[0]}
                 alt="Stairway to Heaven - Luxury mountain cabin in Broken Bow"
                 className="w-full h-full object-cover"
               />
@@ -255,28 +261,28 @@ export default function Home() {
                 <>
                   <h3 className="text-3xl font-bold text-primary">Bay Area Corporate Housing</h3>
                   <p className="text-lg text-foreground/80">
-                    Berryessa Corporate Housing provides the ideal off-site retreat for Silicon Valley companies. Close to major tech hubs yet offering a serene environment for strategic planning, team collaboration, and relationship building.
+                    Our spacious 4-bedroom, 7-bed San Jose home in Alum Rock sits close to Downtown SJ, with room for up to 14 guests. Ideal for families, work crews, wedding groups, and long stays.
                   </p>
                   <ul className="space-y-3">
                     <li className="flex gap-3 items-start">
                       <span className="text-accent font-bold">✓</span>
-                      <span>Located in Berryessa, San Jose Bay Area</span>
+                      <span>Alum Rock, East San Jose, minutes from Downtown SJ</span>
                     </li>
                     <li className="flex gap-3 items-start">
                       <span className="text-accent font-bold">✓</span>
-                      <span>Professional meeting and collaboration spaces</span>
+                      <span>4 bedrooms, 7 beds, 3 bathrooms, sleeps 14</span>
                     </li>
                     <li className="flex gap-3 items-start">
                       <span className="text-accent font-bold">✓</span>
-                      <span>High-speed internet and premium tech infrastructure</span>
+                      <span>Dedicated workspace desks in three bedrooms</span>
                     </li>
                     <li className="flex gap-3 items-start">
                       <span className="text-accent font-bold">✓</span>
-                      <span>Perfect for executive retreats, product launches, and team-building</span>
+                      <span>100" TV living room with large sectional and 8-seat dining table</span>
                     </li>
                     <li className="flex gap-3 items-start">
                       <span className="text-accent font-bold">✓</span>
-                      <span>Outdoor patio and premium furnishings</span>
+                      <span>Easy access to freeways, dining, shopping, and South Bay destinations</span>
                     </li>
                   </ul>
                 </>
@@ -286,7 +292,7 @@ export default function Home() {
             <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
               {activeTab === "leisure" && (
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/service-leisure-retreats-SVEqxx5G8a6wN9FQvHuTqe.webp"
+                  src={stairwayPhotos[4]}
                   alt="Family vacation at luxury mountain cabin with fireplace and mountain views"
                   className="w-full h-full object-cover"
                 />
@@ -348,7 +354,7 @@ export default function Home() {
                   : "text-foreground/60 hover:text-foreground"
               }`}
             >
-              Berryessa Corporate Housing
+              San Jose Corporate Housing
             </button>
           </div>
 
@@ -356,12 +362,31 @@ export default function Home() {
           {propertyTab === "stairway" && (
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-96 md:h-full overflow-hidden">
+                <div className="relative h-96 md:h-full min-h-96 overflow-hidden bg-black">
                   <img
-                    src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/property-luxury-interior-7eTjkBZHdRb5eeMCWLPP7q.webp"
-                    alt="Luxury themed bedroom in Stairway to Heaven"
+                    src={stairwayPhotos[stairwayPhoto]}
+                    alt={`Stairway to Heaven photo ${stairwayPhoto + 1} of ${stairwayPhotos.length}`}
                     className="w-full h-full object-cover"
                   />
+                  <button
+                    type="button"
+                    aria-label="Previous photo"
+                    onClick={() => setStairwayPhoto((stairwayPhoto - 1 + stairwayPhotos.length) % stairwayPhotos.length)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 text-primary shadow hover:bg-white"
+                  >
+                    <ArrowLeft size={20} />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next photo"
+                    onClick={() => setStairwayPhoto((stairwayPhoto + 1) % stairwayPhotos.length)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 text-primary shadow hover:bg-white"
+                  >
+                    <ArrowRight size={20} />
+                  </button>
+                  <span className="absolute bottom-3 right-3 rounded bg-black/60 px-2 py-1 text-xs text-white">
+                    {stairwayPhoto + 1} / {stairwayPhotos.length}
+                  </span>
                 </div>
 
                 <div className="p-8 md:p-12 space-y-6">
@@ -458,14 +483,14 @@ export default function Home() {
 
                 <div className="p-8 md:p-12 space-y-6">
                   <div>
-                    <h3 className="text-3xl font-bold text-primary mb-2">Berryessa Corporate Housing</h3>
-                    <p className="text-accent font-semibold mb-2">San Jose Bay Area, California</p>
-                    <p className="text-foreground/70">Premium corporate retreat and team collaboration space</p>
+                    <h3 className="text-3xl font-bold text-primary mb-2">Spacious 4BR Near Downtown SJ</h3>
+                    <p className="text-accent font-semibold mb-2">Alum Rock, San Jose, California</p>
+                    <p className="text-foreground/70">4 bedrooms, 7 beds, sleeps 14</p>
                   </div>
 
                   <div className="grid grid-cols-3 gap-4 py-6 border-y border-border">
                     <div>
-                      <p className="text-2xl font-bold text-primary">4-6</p>
+                      <p className="text-2xl font-bold text-primary">4</p>
                       <p className="text-sm text-foreground/70">Bedrooms</p>
                     </div>
                     <div>
@@ -473,36 +498,36 @@ export default function Home() {
                       <p className="text-sm text-foreground/70">Bathrooms</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-primary">12-16</p>
+                      <p className="text-2xl font-bold text-primary">14</p>
                       <p className="text-sm text-foreground/70">Max Guests</p>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-primary mb-3">Corporate Housing Features</h4>
+                    <h4 className="font-semibold text-primary mb-3">Home Features</h4>
                     <ul className="space-y-2 text-sm text-foreground/80">
                       <li className="flex gap-2">
-                        <span className="text-accent">•</span> Professional meeting and collaboration spaces
+                        <span className="text-accent">•</span> King, queen, and full beds across 4 bedrooms
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-accent">•</span> High-speed internet and tech infrastructure
+                        <span className="text-accent">•</span> Primary suite with ensuite bath, tub, and bidet
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-accent">•</span> Outdoor patio for team activities
+                        <span className="text-accent">•</span> Dedicated workspace desks and 43" TVs in bedrooms
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-accent">•</span> Close to Silicon Valley tech hubs
+                        <span className="text-accent">•</span> 100" TV living room with large sectional
                       </li>
                       <li className="flex gap-2">
-                        <span className="text-accent">•</span> Premium furnishings and modern amenities
+                        <span className="text-accent">•</span> 8-seat formal dining plus extra round table
                       </li>
                     </ul>
                   </div>
 
                   <div className="bg-accent/10 border border-accent/20 rounded-lg p-4">
-                    <h4 className="font-semibold text-primary mb-2">Perfect for Bay Area Teams</h4>
+                    <h4 className="font-semibold text-primary mb-2">Perfect for Groups and Long Stays</h4>
                     <p className="text-sm text-foreground/80 leading-relaxed">
-                      Located in the heart of the Bay Area, Berryessa Corporate Housing offers the ideal off-site retreat for Silicon Valley companies. Close to major tech hubs yet offering a serene environment for strategic planning, team collaboration, and relationship building. Perfect for executive retreats, product launches, and team-building events.
+                      Bring the whole group to this two-story San Jose home in Alum Rock, close to Downtown SJ. Plenty of sleeping space for families, work crews, wedding groups, and extended corporate stays, with easy access to dining, shopping, freeways, parks, and major South Bay destinations.
                     </p>
                   </div>
                   <div className="pt-4">
