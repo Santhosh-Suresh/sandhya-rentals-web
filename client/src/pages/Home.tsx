@@ -98,8 +98,8 @@ export default function Home() {
             {/* Left: About Image - Silicon Valley meets Hospitality */}
             <div className="relative h-96 rounded-lg overflow-hidden shadow-lg order-2 md:order-1">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/about-silicon-valley-hospitality-CpkHai8z25WKBzfdjrTVTi.webp"
-                alt="Sandhya - Silicon Valley entrepreneur passionate about hospitality"
+                src={`${import.meta.env.BASE_URL}images/site/about-game-loft.jpg`}
+                alt="Loft game room with foosball, bunk beds, and bean bags at Stairway to Heaven"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -292,22 +292,22 @@ export default function Home() {
             <div className="relative h-96 rounded-lg overflow-hidden shadow-lg">
               {activeTab === "leisure" && (
                 <img
-                  src={stairwayPhotos[4]}
-                  alt="Family vacation at luxury mountain cabin with fireplace and mountain views"
+                  src={`${import.meta.env.BASE_URL}images/site/leisure-fire-pit.jpg`}
+                  alt="Fire pit under string lights at Stairway to Heaven"
                   className="w-full h-full object-cover"
                 />
               )}
               {activeTab === "corporate" && (
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663144327334/CgXDrAR24RP5MXtS2qTKYa/service-corporate-retreats-RVCxkqtTNd6jpkHkMCqy5i.webp"
-                  alt="Corporate team-building retreat with strategic planning and collaboration"
+                  src={`${import.meta.env.BASE_URL}images/site/corporate-great-room.jpg`}
+                  alt="Great room with long dining table and open kitchen for team sessions"
                   className="w-full h-full object-cover"
                 />
               )}
               {activeTab === "bay-area" && (
                 <img
-                  src={rockwayPhotos[0]}
-                  alt="Spacious 4-bedroom San Jose home near Downtown SJ"
+                  src={`${import.meta.env.BASE_URL}images/site/bay-area-living.jpg`}
+                  alt="San Jose living room with work table and 100-inch TV"
                   className="w-full h-full object-cover"
                 />
               )}
