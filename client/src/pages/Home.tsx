@@ -10,6 +10,7 @@ import { useState } from "react";
 
 const ROCKWAY_BOOKING_URL = "https://book.balakrishnangroup.com/listings/566609";
 const ROCKWAY_PHOTO_COUNT = 41;
+const STAIRWAY_BOOKING_URL = "https://hometeamluxuryrentals.com/properties/stairway-to-heaven-7br-luxury-pickle-ball-mountain-views-broken-bow";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("leisure");
@@ -413,9 +414,9 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="pt-4">
-                    <a href="https://www.airbnb.com/rooms/1615494606725655003?source_impression_id=p3_1770419505_P3D-wfvLT2ig9P8h" target="_blank" rel="noopener noreferrer">
+                    <a href={STAIRWAY_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                       <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
-                        View on Airbnb <ArrowRight size={18} />
+                        Book Direct <ArrowRight size={18} />
                       </Button>
                     </a>
                   </div>
@@ -602,7 +603,7 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-4">Connect</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="https://www.airbnb.com/rooms/1615494606725655003" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">Stairway to Heaven on Airbnb</a></li>
+                <li><a href={STAIRWAY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">Book Stairway to Heaven</a></li>
                 <li><a href={ROCKWAY_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">Book San Jose Corporate Housing</a></li>
                 <li><a href="mailto:service@sandhyarentals.biz" className="hover:text-accent transition">Email</a></li>
                 <li><a href="tel:+14084311846" className="hover:text-accent transition">Phone</a></li>
